@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stress Test - Projecte Nexus</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #64748b;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --accent: #0f172a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 900px;
+            width: 90%;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        h1 { color: var(--accent); margin-bottom: 0.5rem; }
+        p { color: var(--secondary); margin-bottom: 2rem; }
+
+        /* Galeria d'imatges per al test d'estrès */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .image-card {
+            background: #eee;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            height: 180px;
+            position: relative;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+
+        .status-box {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f1f5f9;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="project-badge">PÀGINA DE PROVES-TEST DE STRESS</div>
+        <h1>Projecte Nexus</h1>
+        <p>Prova de càrrega d'actius externs i concurrència de xarxa per a la validació del servidor web.</p>
+        
+        <div class="image-gallery">
+            <!-- Imatge 1 -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge de servidor]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 1</div>'">
+            </div>
+            <!-- Imatge 2 -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge de ciberseguretat]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 2</div>'">
+            </div>
+            <!-- Imatge 3 -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge d'infraestructura de xarxa]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 3</div>'">
+            </div>
+            <!-- Imatge 4 -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge de tecnologia]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 4</div>'">
+            </div>
+            <!-- Imatge 5 (Nova) -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge d'enginyeria]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 5</div>'">
+            </div>
+            <!-- Imatge 6 (Nova) -->
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=400&q=80" 
+                     alt="[Imatge d'anàlisi de dades]" 
+                     onerror="this.parentElement.innerHTML='<div style=padding:20px>Error de càrrega: Imatge 6</div>'">
+            </div>
+        </div>
+
+        <div class="status-box" id="metrics">
+            <div>> Analitzant la càrrega d'actius en temps real...</div>
+            <div id="img-status">> Estat de les imatges: Carregant...</div>
+            <div id="load-timer">> Temps de resposta total: Calculant...</div>
+        </div>
+
+        <div class="footer">
+            Admin Sys: Nexus Deployment Team &copy; 2026
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Mesura del rendiment mitjançant la Performance API
+            const navTiming = window.performance.getEntriesByType('navigation')[0];
+            const loadTime = navTiming ? navTiming.duration.toFixed(2) : "N/A";
+            document.getElementById('load-timer').innerText = `> Temps total de càrrega: ${loadTime}ms`;
+            
+            // Seguiment de l'estat de càrrega de les imatges
+            const images = document.querySelectorAll('img');
+            let loadedCount = 0;
+            
+            function updateImgStatus(current, total) {
+                const status = document.getElementById('img-status');
+                status.innerText = `> Estat de les imatges: ${current}/${total} carregades`;
+                if(current === total) status.style.color = '#059669';
+            }
+
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedCount++;
+                } else {
+                    img.addEventListener('load', () => {
+                        loadedCount++;
+                        updateImgStatus(loadedCount, images.length);
+                    });
+                    img.addEventListener('error', () => {
+                        loadedCount++;
+                        updateImgStatus(loadedCount, images.length);
+                    });
+                }
+            });
+            updateImgStatus(loadedCount, images.length);
+        };
+    </script>
+</body>
+</html>
