@@ -36,6 +36,11 @@ Quan s'obre la pàgina al navegador:
 
 Descarrega l'arxiu index.html a la carpeta /var/www/projectenexus del teu servidor web (Apache o Nginx) i usa l'eina ab per realitzar proves de càrrega.
 
+```bash
+
+wget https://github.com/carlesalonso/Projecte6-T04/blob/main/index.html
+```
+
 És important assegurar-se que el servidor que està actiu és el que voleu provar:
 
 ```bash
