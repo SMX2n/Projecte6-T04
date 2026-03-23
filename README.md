@@ -40,7 +40,7 @@ Descarrega l'arxiu index.html a la carpeta /var/www/projectenexus del teu servid
 
 ```bash
 
-wget https://github.com/SMX2n/Projecte6-T04/blob/main/index.html
+wget https://github.com/SMX2n/Projecte6-T04/blob/24d6e63ec74c2b061460360ce4471d0d174d1f79/index.html
 ```
 
 És important assegurar-se que el servidor que està actiu és el que voleu provar:
