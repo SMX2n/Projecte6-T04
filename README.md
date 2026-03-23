@@ -1,5 +1,7 @@
 # T04. Apache vs Nginx
 
+![Apache vs Nginx](apachevsnginx.png)
+
 ## Descripció
 
 Aquest repositori correspoen a la T04 i presenta una pàgina web estàtica orientada a provar la càrrega de recursos externs i el comportament bàsic d'un servidor web.
