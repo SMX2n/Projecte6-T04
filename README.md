@@ -90,9 +90,9 @@ Per exemple, per provar un escenari suau i un d'exigent faríem:
 
 ```bash
 
-ab -n 1000 -c 10 http://www.projectenexus.test
+ab -n 1000 -c 10 http://www.projectenexus.test/
 
-ab -n 10000 -c 100 http://www.projectenexus.test
+ab -n 10000 -c 100 http://www.projectenexus.test/
 ```
 
 ## Resultats
