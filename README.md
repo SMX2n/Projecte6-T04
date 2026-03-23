@@ -66,6 +66,24 @@ sudo systemctl disable apache2 --now
 sudo systemctl enable nginx --now
 ```
 
+A continuació **cal eliminar a l'arxiu de configuració de virtual host (Apache i Nginx) la redirecció cap la pàgina segura**. Com que el certificat és autosignat, no carregaria la pàgina. Un cop eliminada la redirecció, recarregeu el servei `systemctl reload apache2` o `systemctl reload nginx`.
+
+Les proves les farem amb la utilitat `ab`:
+
+```bash
+
+ab -n Nombre peticions -c usuaris concurrents URL
+```
+
+Per exemple, per provar un escenari suau i un d'exigent faríem:
+
+```bash
+
+ab -n 1000 -c 10 http://www.projectenexus.test
+
+ab -n 10000 -c 100 http://www.projectenexus.test
+```
+
 ## Tecnologies utilitzades
 
 - HTML5
