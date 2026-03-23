@@ -66,7 +66,11 @@ sudo systemctl disable apache2 --now
 sudo systemctl enable nginx --now
 ```
 
-A continuació **cal eliminar a l'arxiu de configuració de virtual host (Apache i Nginx) la redirecció cap la pàgina segura**. Com que el certificat és autosignat, no carregaria la pàgina. Un cop eliminada la redirecció, recarregeu el servei `systemctl reload apache2` o `systemctl reload nginx`.
+A continuació **cal eliminar a l'arxiu de configuració de virtual host (Apache i Nginx) la redirecció cap la pàgina segura**. Com que el certificat és autosignat, no carregaria la pàgina.
+
+Un cop eliminada la redirecció, recarregeu el servei:
+
+ `systemctl reload apache2` o `systemctl reload nginx`.
 
 Les proves les farem amb la utilitat `ab`:
 
@@ -89,7 +93,6 @@ ab -n 10000 -c 100 http://www.projectenexus.test
 - HTML5
 - CSS3
 - JavaScript
-- Performance API del navegador
 
 ## Autor
 
