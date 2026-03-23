@@ -95,6 +95,25 @@ ab -n 1000 -c 10 http://www.projectenexus.test
 ab -n 10000 -c 100 http://www.projectenexus.test
 ```
 
+## Resultats
+
+Anoteu els resultats que obteniu igual que a la prova anterior.
+
+Què cal lliurar
+
+Crear una taula comparativa amb les dades obtingudes:
+
+| Mètrica | Apache  prova lleugera | Nginx prova lleugera | Apache prova d’estrès | Nginx prova d’estrès |
+| :---- | :---- | :---- | :---- | :---- |
+| Time taken for test |  |  |  |  |
+| Transfer rate |  |  |  |  |
+| RPS |  |  |  |  |
+| Time per request |  |  |  |  |
+| Completed request |  |  |  |  |
+| Failed request |  |  |  |  |
+
+
+
 ## Tecnologies utilitzades
 
 - HTML5
