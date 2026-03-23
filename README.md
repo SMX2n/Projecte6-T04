@@ -74,6 +74,13 @@ Un cop eliminada la redirecció, recarregeu el servei:
 
 Les proves les farem amb la utilitat `ab`:
 
+Em primer lloc, a Zorin instal·leu les utilitats d'Apache:
+
+```bash
+
+sudo apt install apache2-utils -y
+```
+
 ```bash
 
 ab -n Nombre peticions -c usuaris concurrents URL
